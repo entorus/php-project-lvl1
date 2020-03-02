@@ -1,0 +1,13 @@
+{
+    "name": "entorus/first",
+    "bin": [
+	    "bin/brain-games"
+    ],
+    "authors": [
+        {
+            "name": "entorus",
+            "email": "entorus@yandex.ru"
+        }
+    ],
+    "require": {}
+}
