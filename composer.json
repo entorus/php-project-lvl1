@@ -1,7 +1,7 @@
 {
     "name": "entorus/first",
     "bin": [
-	    "bin/brain-games"
+	    "bin/brain-even"
     ],
     "authors": [
         {
