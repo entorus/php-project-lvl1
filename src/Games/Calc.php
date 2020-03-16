@@ -12,6 +12,7 @@
         {
             line('Welcome to the Brain Games!');
             line('What is the result of the expression?');
+            line('');
             $name = prompt('May I have your name?');
             line("Hello, %s! \n", $name);
             $this->name = $name;
@@ -30,6 +31,7 @@
                     line("Let's try again, $this->name!");
                 return;
                 }
+                line("Correct!");
             }
             line("Congratulations, $this->name!");    
         }
