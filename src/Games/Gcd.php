@@ -24,8 +24,8 @@ class Gcd
             $number1 = random_int(1, 100);
             $number2 = random_int(1, 100);
             $question = $this->gcd($number1, $number2);
-            $answer = (int)prompt('Your answer');
-            if (!$this->isCorrect($question, $answer)) {
+            $answer = prompt('Your answer');
+            if (!$this->isCorrect($question, (int)$answer)) {
                 line("'$answer' is wrong answer ;(. Correct answer was '$question'.");
                 line("Let's try again, $this->name!");
                 return;
