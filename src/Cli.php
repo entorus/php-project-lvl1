@@ -18,6 +18,9 @@ function run($game)
         case 'gcd':
             $gameplay = new \BrainGames\Games\Gcd();
             break;
+        case 'progression':
+            $gameplay = new \BrainGames\Games\Progression();
+            break;
         default:
             line('error');
             break;
