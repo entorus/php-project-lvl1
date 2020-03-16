@@ -4,8 +4,17 @@
 [![Github Actions Status](https://github.com/entorus/php-project-lvl1/workflows/PHPCS/badge.svg)](https://github.com/entorus/php-project-lvl1/actions)
 <br>
 Brain Even
+<br>
 [![asciicast](https://asciinema.org/a/AXIsxpQFmTbwzRiNuz5rSUi2k.svg)](https://asciinema.org/a/AXIsxpQFmTbwzRiNuz5rSUi2k)
+<br>
 Brain Calc
+<br>
 [![asciicast](https://asciinema.org/a/zVkJPcFNJDzd4TyPig6rvxvqb.svg)](https://asciinema.org/a/zVkJPcFNJDzd4TyPig6rvxvqb)
+<br>
 Brain Gcd
+<br>
 [![asciicast](https://asciinema.org/a/2Xg2uePFSvuBkazXjMc2E2RfH.svg)](https://asciinema.org/a/2Xg2uePFSvuBkazXjMc2E2RfH)
+<br>
+Brain Progression
+<br>
+[![asciicast](https://asciinema.org/a/RMv8Ny9we9hL0MVRmuoiXgjEH.svg)](https://asciinema.org/a/RMv8Ny9we9hL0MVRmuoiXgjEH)
