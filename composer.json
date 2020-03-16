@@ -2,7 +2,8 @@
     "name": "entorus/first",
     "bin": [
         "bin/brain-even",
-        "bin/brain-calc"
+        "bin/brain-calc",
+        "bin/brain-gcd"
     ],
     "authors": [
         {

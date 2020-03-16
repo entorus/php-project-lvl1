@@ -15,6 +15,9 @@ function run($game)
         case 'even':
             $gameplay = new \BrainGames\Games\Even();
             break;
+        case 'gcd':
+            $gameplay = new \BrainGames\Games\Gcd();
+            break;
         default:
             line('error');
             break;

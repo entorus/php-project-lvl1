@@ -16,6 +16,7 @@ class Even
         $name = prompt('May I have your name?');
         line("Hello, %s! \n", $name);
         $this->name = $name;
+        line('');
     }
 
     public function play()
