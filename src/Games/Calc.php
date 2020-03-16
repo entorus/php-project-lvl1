@@ -12,12 +12,10 @@ class Calc
     public function __construct()
     {
         line('Welcome to the Brain Games!');
-        line('What is the result of the expression?');
-        line('');
+        line("What is the result of the expression? \n");
         $name = prompt('May I have your name?');
         line("Hello, %s! \n", $name);
         $this->name = $name;
-        line('');
     }
 
     public function play()
@@ -26,8 +24,8 @@ class Calc
             $number1 = random_int(0, 100);
             $number2 = random_int(0, 100);
             $question = $this->mathOperation($number1, $number2);
-            $answer = (int)prompt('Your answer');
-            if (!$this->isCorrect($question, $answer)) {
+            $answer = prompt('Your answer');
+            if (!$this->isCorrect($question, (int)$answer)) {
                 line("'$answer' is wrong answer ;(. Correct answer was '$question'.");
                 line("Let's try again, $this->name!");
                 return;

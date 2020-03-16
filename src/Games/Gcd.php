@@ -12,12 +12,10 @@ class Gcd
     public function __construct()
     {
         line('Welcome to the Brain Games!');
-        line('Find the greatest common divisor of given numbers.');
-        line('');
+        line("Find the greatest common divisor of given numbers. \n");
         $name = prompt('May I have your name?');
         line("Hello, %s! \n", $name);
         $this->name = $name;
-        line('');
     }
 
     public function play()
