@@ -14,11 +14,10 @@ function run($game)
             break;
         case 'even':
             $gameplay = new \BrainGames\Games\Even();
-            break;    
+            break;
         default:
             line('error');
             break;
     }
     $gameplay->play();
 }
-
