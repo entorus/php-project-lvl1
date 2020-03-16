@@ -1,7 +1,8 @@
 {
     "name": "entorus/first",
     "bin": [
-	    "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "authors": [
         {
@@ -13,6 +14,9 @@
         "phpcs": "phpcs"
     },
     "autoload": {
+        "psr-4": {
+            "BrainGames\\": "src"
+        },
         "files": [
             "src/Cli.php"
         ]

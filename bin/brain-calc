@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../src/autoloadcustom.php';
+
+#BrainGames\run();
+
+#$calc = new BrainGames\Games\Calc();
+#$calc->test();
+BrainGames\run('calc');
