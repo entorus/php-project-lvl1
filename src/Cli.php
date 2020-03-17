@@ -21,6 +21,9 @@ function run($game)
         case 'progression':
             $gameplay = new \BrainGames\Games\Progression();
             break;
+        case 'prime':
+            $gameplay = new \BrainGames\Games\Prime();
+            break;
         default:
             line('error');
             break;

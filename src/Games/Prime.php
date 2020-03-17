@@ -5,14 +5,15 @@ namespace BrainGames\Games;
 use function cli\line;
 use function cli\prompt;
 
-class Even
+class Prime
 {
-    private $name;
+        private $name;
 
     public function __construct()
     {
-        line('Welcome to Brain Games!');
-        line('Answer "yes" if the number is even, otherwise answer "no".' . "\n");
+        line('Welcome to the Brain Games!');
+        line('Answer "yes" if given number is prime. Otherwise answer "no".');
+        line('');
         $name = prompt('May I have your name?');
         line("Hello, %s! \n", $name);
         $this->name = $name;
@@ -20,31 +21,37 @@ class Even
 
     public function play()
     {
-        $correct_answers_count = 0;
         for ($i = 0; $i < 3; $i++) {
-            $number = random_int(0, 100);
-            line('Question: ' . $number);
-            $answer = prompt("Your answer");
-            $even = $this->isEven($number);
+            $number1 = random_int(0, 100);
+            $question = $this->isPrime($number1);
+            line("Question %s", $number1);
+            $answer = prompt('Your answer');
             $is_true = $this->isTrue($answer);
-            if ($is_true !== -1 && $even == $is_true) {
+            if ($is_true !== -1 && $question == $is_true) {
                 line("Correct!");
-                $correct_answers_count++;
             } else {
                 $correct_answer = !$is_true ? 'yes' : 'no';
                 line("'$answer' is wrong answer ;(. Correct answer was '$correct_answer'.");
                 line("Let's try again, $this->name!");
-                break;
+                return;
             }
         }
-        if ($correct_answers_count == 3) {
-            line("Congratulations, $this->name!");
-        }
+        line("Congratulations, $this->name!");
     }
 
-    private function isEven($num): bool
+    private function isPrime($num)
     {
-        return (int)$num % 2 == 0;
+        if ($num < 2) {
+            return false;
+        }
+
+        for ($i = 2; $i <= $num / 2; $i++) {
+            if ($num % $i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function isTrue($input)
