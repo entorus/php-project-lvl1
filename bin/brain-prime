@@ -3,4 +3,4 @@
 
 require_once __DIR__ . '/../src/autoloadcustom.php';
 
-BrainGames\run('prime');
+new \BrainGames\Games\Prime();

@@ -3,5 +3,5 @@
 
 require_once __DIR__ . '/../src/autoloadcustom.php';
 
-BrainGames\run('even');
+new \BrainGames\Games\Even();
 

@@ -2,43 +2,54 @@
 
 namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
 class Gcd
 {
-        private $name;
+    private $description;
+    private $question;
+    private $answer;
+    private $correctAnswer;
 
     public function __construct()
     {
-        line('Welcome to the Brain Games!');
-        line("Find the greatest common divisor of given numbers. \n");
-        $name = prompt('May I have your name?');
-        line("Hello, %s! \n", $name);
-        $this->name = $name;
+        $this->description = 'Find the greatest common divisor of given numbers.';
+        \BrainGames\run($this);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    }
+
+    public function getCorrectAnswer()
+    {
+        return $this->correctAnswer;
+    }
+
+    public function getQuestion()
+    {
+        $number1 = random_int(1, 100);
+        $number2 = random_int(1, 100);
+        $this->correctAnswer = $this->gcd($number1, $number2);
+        return $this->question;
     }
 
     public function play()
     {
-        for ($i = 0; $i < 3; $i++) {
-            $number1 = random_int(1, 100);
-            $number2 = random_int(1, 100);
-            $question = $this->gcd($number1, $number2);
-            $answer = prompt('Your answer');
-            if (!$this->isCorrect($question, (int)$answer)) {
-                line("'$answer' is wrong answer ;(. Correct answer was '$question'.");
-                line("Let's try again, $this->name!");
-                return;
-            }
-            line("Correct!");
+        if (!$this->isCorrect($this->correctAnswer, (int)$this->answer)) {
+            return false;
         }
-        line("Congratulations, $this->name!");
+        return true;
     }
 
     private function gcd($num1, $num2)
     {
         $minimum = $this->minimum($num1, $num2);
-        line('Question: ' . $num1 . ' ' . $num2);
+        $this->question = $num1 . ' ' . $num2;
         for ($i = $minimum; $i >= 1; $i--) {
             if ($num1 % $i == 0 && $num2 % $i == 0) {
                 return $i;

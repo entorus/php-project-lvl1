@@ -2,37 +2,48 @@
 
 namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
 class Progression
 {
-        private $name;
+    private $description;
+    private $question;
+    private $answer;
+    private $correctAnswer;
 
     public function __construct()
     {
-        line('Welcome to the Brain Games!');
-        line("What number is missing in the progression? \n");
-        $name = prompt('May I have your name?');
-        line("Hello, %s! \n", $name);
-        $this->name = $name;
+        $this->description = 'What number is missing in the progression?';
+        \BrainGames\run($this);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    }
+
+    public function getCorrectAnswer()
+    {
+        return $this->correctAnswer;
+    }
+
+    public function getQuestion()
+    {
+        $number = random_int(1, 100);
+        $diff = random_int(1, 100);
+        $this->correctAnswer = $this->generateProgression($number, $diff);
+        return $this->question;
     }
 
     public function play()
     {
-        for ($i = 0; $i < 3; $i++) {
-            $number = random_int(1, 100);
-            $diff = random_int(1, 100);
-            $question = $this->generateProgression($number, $diff);
-            $answer = prompt('Your answer');
-            if (!$this->isCorrect($question, (int)$answer)) {
-                line("'$answer' is wrong answer ;(. Correct answer was '$question'.");
-                line("Let's try again, $this->name!");
-                return;
-            }
-            line("Correct!");
+        if (!$this->isCorrect($this->correctAnswer, (int)$this->answer)) {
+                return false;
         }
-        line("Congratulations, $this->name!");
+        return true;
     }
 
     private function generateProgression($num, $diff)
@@ -45,7 +56,7 @@ class Progression
         $correctAnswer = $progression[$correctAnswerPosition];
         $progression[$correctAnswerPosition] = '...';
         $question = implode(' ', $progression);
-        line('Question: ' . $question);
+        $this->question = $question;
         return $correctAnswer;
     }
 

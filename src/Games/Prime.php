@@ -2,41 +2,51 @@
 
 namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
 class Prime
 {
-        private $name;
+    private $description;
+    private $question;
+    private $answer;
+    private $correctAnswer;
 
     public function __construct()
     {
-        line('Welcome to the Brain Games!');
-        line('Answer "yes" if given number is prime. Otherwise answer "no".');
-        line('');
-        $name = prompt('May I have your name?');
-        line("Hello, %s! \n", $name);
-        $this->name = $name;
+        $this->description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+        \BrainGames\run($this);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    }
+
+    public function getQuestion()
+    {
+        $number1 = random_int(0, 100);
+        $this->question = $number1;
+        $this->correctAnswer = $this->isPrime($number1);
+        return $this->question;
+    }
+
+    public function getCorrectAnswer()
+    {
+        return $this->correctAnswer;
     }
 
     public function play()
     {
-        for ($i = 0; $i < 3; $i++) {
-            $number1 = random_int(0, 100);
-            $question = $this->isPrime($number1);
-            line("Question %s", $number1);
-            $answer = prompt('Your answer');
-            $is_true = $this->isTrue($answer);
-            if ($is_true !== -1 && $question == $is_true) {
-                line("Correct!");
-            } else {
-                $correct_answer = !$is_true ? 'yes' : 'no';
-                line("'$answer' is wrong answer ;(. Correct answer was '$correct_answer'.");
-                line("Let's try again, $this->name!");
-                return;
-            }
+        $is_true = $this->isTrue($this->answer);
+        if ($is_true !== -1 && $this->correctAnswer == $is_true) {
+            return true;
+        } else {
+            $this->correctAnswer = !$is_true ? 'yes' : 'no';
+            return false;
         }
-        line("Congratulations, $this->name!");
     }
 
     private function isPrime($num)

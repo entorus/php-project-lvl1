@@ -7,26 +7,24 @@ use function cli\prompt;
 
 function run($game)
 {
-    $gameplay = null;
-    switch ($game) {
-        case 'calc':
-            $gameplay = new \BrainGames\Games\Calc();
-            break;
-        case 'even':
-            $gameplay = new \BrainGames\Games\Even();
-            break;
-        case 'gcd':
-            $gameplay = new \BrainGames\Games\Gcd();
-            break;
-        case 'progression':
-            $gameplay = new \BrainGames\Games\Progression();
-            break;
-        case 'prime':
-            $gameplay = new \BrainGames\Games\Prime();
-            break;
-        default:
-            line('error');
-            break;
+    line('Welcome to the Brain Games!');
+    $description = $game->getDescription();
+    line("%s \n", $description);
+    $name = prompt('May I have your name?');
+    line("Hello, %s! \n", $name);
+    for ($i = 0; $i < 3; $i++) {
+        $question = $game->getQuestion();
+        line("Question: %s", $question);
+        $answer = prompt('Your answer');
+        $game->setAnswer($answer);
+        $result = $game->play();
+        if (!$result) {
+            $correctAnswer = $game->getCorrectAnswer();
+            line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
+            line("Let's try again, $name!");
+            return;
+        }
     }
-    $gameplay->play();
+    line("Correct!");
+    line("Congratulations, $name!");
 }

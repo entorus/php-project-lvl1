@@ -2,44 +2,57 @@
 
 namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
 class Calc
 {
-        private $name;
+    private $description;
+    private $question;
+    private $answer;
+    private $correctAnswer;
 
     public function __construct()
     {
-        line('Welcome to the Brain Games!');
-        line("What is the result of the expression? \n");
-        $name = prompt('May I have your name?');
-        line("Hello, %s! \n", $name);
-        $this->name = $name;
+        $this->description = "What is the result of the expression?";
+        \BrainGames\run($this);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    }
+
+    public function getQuestion()
+    {
+        $number1 = random_int(0, 100);
+        $number2 = random_int(0, 100);
+        $this->correctAnswer = $this->mathOperation($number1, $number2);
+        return $this->question;
+    }
+
+    public function getCorrectAnswer()
+    {
+        return $this->correctAnswer;
     }
 
     public function play()
     {
-        for ($i = 0; $i < 3; $i++) {
-            $number1 = random_int(0, 100);
-            $number2 = random_int(0, 100);
-            $question = $this->mathOperation($number1, $number2);
-            $answer = prompt('Your answer');
-            if (!$this->isCorrect($question, (int)$answer)) {
-                line("'$answer' is wrong answer ;(. Correct answer was '$question'.");
-                line("Let's try again, $this->name!");
-                return;
-            }
-            line("Correct!");
+        if (!$this->isCorrect($this->correctAnswer, (int)$this->answer)) {
+            return false;
         }
-        line("Congratulations, $this->name!");
+        return true;
     }
+
+    
 
     private function mathOperation($num1, $num2)
     {
         $operations = ['-', '+', '*'];
         $operation = random_int(0, 2);
-        line('Question: ' . $num1 . ' ' . $operations[$operation] . ' ' . $num2);
+        $this->question = $num1 . ' ' . $operations[$operation] . ' ' . $num2;
         switch ($operation) {
             case '0':
                 return $num1 - $num2;

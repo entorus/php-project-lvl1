@@ -2,43 +2,50 @@
 
 namespace BrainGames\Games;
 
-use function cli\line;
-use function cli\prompt;
-
 class Even
 {
-    private $name;
+    private $description;
+    private $question;
+    private $answer;
+    private $correctAnswer;
 
     public function __construct()
     {
-        line('Welcome to Brain Games!');
-        line('Answer "yes" if the number is even, otherwise answer "no".' . "\n");
-        $name = prompt('May I have your name?');
-        line("Hello, %s! \n", $name);
-        $this->name = $name;
+        $this->description = 'Answer "yes" if the number is even, otherwise answer "no".';
+        \BrainGames\run($this);
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    }
+
+    public function getQuestion()
+    {
+        $number = random_int(0, 100);
+        $this->question = $number;
+        return $this->question;
+    }
+
+    public function getCorrectAnswer()
+    {
+        return $this->correctAnswer;
     }
 
     public function play()
     {
-        $correct_answers_count = 0;
-        for ($i = 0; $i < 3; $i++) {
-            $number = random_int(0, 100);
-            line('Question: ' . $number);
-            $answer = prompt("Your answer");
-            $even = $this->isEven($number);
-            $is_true = $this->isTrue($answer);
-            if ($is_true !== -1 && $even == $is_true) {
-                line("Correct!");
-                $correct_answers_count++;
-            } else {
-                $correct_answer = !$is_true ? 'yes' : 'no';
-                line("'$answer' is wrong answer ;(. Correct answer was '$correct_answer'.");
-                line("Let's try again, $this->name!");
-                break;
-            }
-        }
-        if ($correct_answers_count == 3) {
-            line("Congratulations, $this->name!");
+        $even = $this->isEven((int)$this->question);
+        $is_true = $this->isTrue($this->answer);
+        if ($is_true !== -1 && $even == $is_true) {
+            return true;
+        } else {
+            $this->correctAnswer = !$is_true ? 'yes' : 'no';
+            return false;
         }
     }
 
