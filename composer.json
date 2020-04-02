@@ -17,11 +17,13 @@
         "phpcs": "phpcs"
     },
     "autoload": {
-        "psr-4": {
-            "BrainGames\\": "src"
-        },
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/Games/calc.php",
+            "src/Games/even.php",
+            "src/Games/gcd.php",
+            "src/Games/prime.php",
+            "src/Games/progression.php"
         ]
     },
     
