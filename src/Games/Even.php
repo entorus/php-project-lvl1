@@ -6,15 +6,15 @@ const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".'
 
 function run()
 {
-    $gameplay = function () {
-        $number = random_int(0, 100);
+    $playGame = function () {
+        $question = random_int(0, 100);
         $gameData = [];
-        $gameData['question'] = $number;
-        $result = getCorrectAnswer($number);
+        $gameData['question'] = $question;
+        $result = getCorrectAnswer($question);
         $gameData['result'] = $result;
         return $gameData;
     };
-    \BrainGames\run($gameplay, DESCRIPTION);
+    \BrainGames\run($playGame, DESCRIPTION);
 }
 
 function isEven($number): bool

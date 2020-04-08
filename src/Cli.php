@@ -12,11 +12,9 @@ function run($gameResult, $description)
     $name = prompt('May I have your name?');
     line("Hello, %s! \n", $name);
     for ($i = 0; $i < 3; $i++) {
-        $gameData = $gameResult();
-        $question = $gameData['question'];
+        ['question' => $question, 'result' => $result] = $gameResult();
         line("Question: %s", $question);
         $answer = prompt('Your answer');
-        $result = $gameData['result'];
         if ($result != $answer) {
             line("'$answer' is wrong answer ;(. Correct answer was '$result'.");
             line("Let's try again, $name!");
