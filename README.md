@@ -1,6 +1,5 @@
 # Игры разума
 
-One Paragraph of project description goes here
 <a href="https://codeclimate.com/github/entorus/php-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/955c5d3f1c721410dcd8/maintainability" /></a>
 [![Github Actions Status](https://github.com/entorus/php-project-lvl1/workflows/PHPCS/badge.svg)](https://github.com/entorus/php-project-lvl1/actions)
 
@@ -12,7 +11,7 @@ One Paragraph of project description goes here
 
 ```
 #Установка
-composer require entorus/first
+composer global require entorus/first
 
 #Запуск игры
 brain-progression
