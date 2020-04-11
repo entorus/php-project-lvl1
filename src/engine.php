@@ -5,14 +5,16 @@ namespace BrainGames;
 use function cli\line;
 use function cli\prompt;
 
-function run($gameResult, $description)
+const QUESTIONS_COUNT = 3;
+
+function run($getGameResult, $description)
 {
     line('Welcome to the Brain Games!');
     line("%s \n", $description);
     $name = prompt('May I have your name?');
-    line("Hello, %s! \n", $name);
-    for ($i = 0; $i < 3; $i++) {
-        ['question' => $question, 'result' => $result] = $gameResult();
+    line("Hello, %s!\n", $name);
+    for ($i = 0; $i < QUESTIONS_COUNT; $i++) {
+        ['question' => $question, 'result' => $result] = $getGameResult();
         line("Question: %s", $question);
         $answer = prompt('Your answer');
         if ($result != $answer) {

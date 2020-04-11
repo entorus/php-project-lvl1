@@ -14,28 +14,33 @@ function run()
         $correctAnswerPosition = random_int(0, $lastElementOfProgression);
 
         $gameData = [];
-        $gameResult = generateGameData($firstElementOfProgression, $diff, $correctAnswerPosition);
-        $gameData['question'] = $gameResult['progressionText'];
-        $result = $gameResult['correctAnswer'];
-        $gameData['result'] = $result;
+        $progression = generateProgression(
+            $firstElementOfProgression, $diff, 
+            $correctAnswerPosition
+        );
+        $gameData['question'] = getQuestion($progression, $correctAnswerPosition);
+        $gameData['result'] = getCorrectAnswer($progression, $correctAnswerPosition);
         return $gameData;
     };
     \BrainGames\run($gameplay, DESCRIPTION);
 }
 
-function generateGameData($num, $diff, $position)
+function generateProgression($firstElement, $diff, $position)
 {
-    for (
-        $elementPosition = 0, $element = $num;
-        $elementPosition < PROGRESSION_LENGTH;
-        $elementPosition++, $element += $diff
-    ) {
-        $progression[$elementPosition] = $element;
+    for ($i = 0; $i < PROGRESSION_LENGTH; $i++) {
+        $progression[$i] = $firstElement + $diff * $i;
     }
-    $correctAnswer = $progression[$position];
+    return $progression;
+}
+
+function getQuestion($progression, $position)
+{
     $progression[$position] = '...';
     $question = implode(' ', $progression);
-    $result['progressionText'] = $question;
-    $result['correctAnswer'] = $correctAnswer;
-    return $result;
+    return $question;
+}
+
+function getCorrectAnswer($progression, $position)
+{
+    return $progression[$position];
 }
