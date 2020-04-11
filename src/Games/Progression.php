@@ -15,7 +15,8 @@ function run()
 
         $gameData = [];
         $progression = generateProgression(
-            $firstElementOfProgression, $diff, 
+            $firstElementOfProgression,
+            $diff,
             $correctAnswerPosition
         );
         $gameData['question'] = getQuestion($progression, $correctAnswerPosition);
