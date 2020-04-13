@@ -6,7 +6,7 @@ const DESCRIPTION = "What is the result of the expression?";
 
 function run()
 {
-    $generateGameData = function () {
+    $playGame = function () {
         $operations = [
             '*' => function ($a, $b) {
                 return $a * $b;
@@ -27,5 +27,5 @@ function run()
         $gameData['result'] = $result;
         return $gameData;
     };
-    \BrainGames\run($generateGameData, DESCRIPTION);
+    \BrainGames\run($playGame, DESCRIPTION);
 }

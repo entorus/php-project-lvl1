@@ -7,11 +7,11 @@ const PROGRESSION_LENGTH = 10;
 
 function run()
 {
-    $gameplay = function () {
+    $playGame = function () {
         $firstElementOfProgression = random_int(1, 100);
         $diff = random_int(1, 100);
-        $lastElementOfProgression = PROGRESSION_LENGTH - 1;
-        $correctAnswerPosition = random_int(0, $lastElementOfProgression);
+        $lastElementOfProgressionIndex = PROGRESSION_LENGTH - 1;
+        $correctAnswerPosition = random_int(0, $lastElementOfProgressionIndex);
 
         $gameData = [];
         $progression = generateProgression(
@@ -23,7 +23,7 @@ function run()
         $gameData['result'] = getCorrectAnswer($progression, $correctAnswerPosition);
         return $gameData;
     };
-    \BrainGames\run($gameplay, DESCRIPTION);
+    \BrainGames\run($playGame, DESCRIPTION);
 }
 
 function generateProgression($firstElement, $diff, $position)
