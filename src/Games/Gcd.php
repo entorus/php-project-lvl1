@@ -6,7 +6,7 @@ const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 function run()
 {
-    $playGame = function () {
+    $generateGameData = function () {
         $number1 = random_int(1, 100);
         $number2 = random_int(1, 100);
         $gameData = [];
@@ -15,7 +15,7 @@ function run()
         $gameData['result'] = $result;
         return $gameData;
     };
-    \BrainGames\run($playGame, DESCRIPTION);
+    \BrainGames\run($generateGameData, DESCRIPTION);
 }
 
 function gcd($num1, $num2)

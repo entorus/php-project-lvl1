@@ -6,7 +6,7 @@ const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no
 
 function run()
 {
-    $playGame = function () {
+    $generateGameData = function () {
         $question = random_int(0, 100);
 
         $gameData = [];
@@ -15,7 +15,7 @@ function run()
         $gameData['result'] = $result;
         return $gameData;
     };
-    \BrainGames\run($playGame, DESCRIPTION);
+    \BrainGames\run($generateGameData, DESCRIPTION);
 }
 
 function getCorrectAnswer($num)
